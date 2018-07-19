@@ -1,0 +1,22 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: node ./bin/www
+    ports:
+      - "3000:3000"
+    volumes:
+      - /Users/lena/Documents/backend/BE:/Users/lena/Documents/backend/BE/app
+      - /Users/lena/Documents/backend/BE/app/node_modules
+    depends_on:
+      - "mongo"
+
+  mongo:
+    image: "mongo"
+    ports:
+      - "27017:27017"
+
+  adminmongo:
+    image: "mrvautin/adminmongo"
+    ports:
+      - "1234:1234"
